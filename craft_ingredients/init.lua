@@ -472,7 +472,7 @@ end
 
 minetest.register_craft({
   type = "cooking",
-  output = "multidecor:oil_source",
+  output = "multidecor:oil_source 5",
   recipe = "multidecor:consolidated_oil",
   cooktime = 5,
 })
