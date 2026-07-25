@@ -469,3 +469,10 @@ if minetest.get_modpath("moreores") then
 		replacements = {{"multidecor:steel_scissors", "multidecor:steel_scissors"}}
 	})
 end
+
+minetest.register_craft({
+  type = "cooking",
+  output = "multidecor:oil_source",
+  recipe = "multidecor:consolidated_oil",
+  cooktime = 5,
+})
