@@ -484,6 +484,16 @@ minetest.register_craft({
   cooktime = 10,
 })
 
+minetest.register_craft({
+  output = "multidecor:oil_source",
+  recipe = {
+    {"craft_ingredients:oil_bucket"},
+  },
+  replacements = {
+    {"craft_ingredients:oil_bucket", "bucket:bucket_empty"},
+  },
+})
+
 if minetest.get_modpath("basic_materials") then
   minetest.register_craft({
     type = "shapeless",
