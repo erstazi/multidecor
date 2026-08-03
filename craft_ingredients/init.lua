@@ -376,17 +376,6 @@ multidecor.craft.register("wax_lump",
 })
 
 
-minetest.register_craft({
-  type = "cooking",
-  output = "multidecor:wax_lump",
-  recipe = "craft_ingredients:oil_bucket",
-  cooktime = 10,
-  replacements = {
-    {"craft_ingredients:oil_bucket", "bucket:bucket_empty"},
-  },
-})
-
-
 multidecor.craft.register("wax_candle",
 {
   type = "shapeless",
@@ -494,6 +483,9 @@ minetest.register_craft({
   output = "multidecor:wax_lump",
   recipe = "craft_ingredients:oil_bucket",
   cooktime = 10,
+  replacements = {
+    {"craft_ingredients:oil_bucket", "bucket:bucket_empty"},
+  },
 })
 
 minetest.register_craft({
