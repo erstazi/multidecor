@@ -368,14 +368,24 @@ multidecor.craft.register("spring",
   recipe = {"multidecor:metal_wire", "multidecor:metal_wire"}
 })
 
-multidecor.craft.register("wax_lump", {
+multidecor.craft.register("wax_lump",
+{
   type = "cooking",
   recipe = "multidecor:oil_source",
+  cooktime = 10
+})
+
+
+minetest.register_craft({
+  type = "cooking",
+  output = "multidecor:wax_lump",
+  recipe = "craft_ingredients:oil_bucket",
   cooktime = 10,
   replacements = {
-    {"multidecor:oil_source", "bucket:bucket_empty"},
+    {"craft_ingredients:oil_bucket", "bucket:bucket_empty"},
   },
 })
+
 
 multidecor.craft.register("wax_candle",
 {
