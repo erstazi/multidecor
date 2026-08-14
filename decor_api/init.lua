@@ -5,15 +5,7 @@ multidecor.S = minetest.get_translator("decor_api")
 local init_start = os.clock()
 minetest.log("action", "[multidecor] " .. minetest.get_current_modname() .. " init.lua START")
 
-local function timed_dofile(name)
-	local start = os.clock()
-	dofile(modpath .. "/" .. name .. ".lua")
-	local elapsed = os.clock() - start
 
-	minetest.log("action",
-			"[multidecor] " .. minetest.get_current_modname() .. "/" .. name ..
-			" loaded in " .. string.format("%.4f", elapsed) .. " seconds")
-end
 
 
 multidecor.colors = {
@@ -28,6 +20,16 @@ multidecor.colors = {
 }
 
 local modpath = minetest.get_modpath("decor_api")
+
+local function timed_dofile(name)
+	local start = os.clock()
+	dofile(modpath .. "/" .. name .. ".lua")
+	local elapsed = os.clock() - start
+
+	minetest.log("action",
+			"[multidecor] " .. minetest.get_current_modname() .. "/" .. name ..
+			" loaded in " .. string.format("%.4f", elapsed) .. " seconds")
+end
 
 timed_dofile(modpath .. "/common_helpers.lua")
 timed_dofile(modpath .. "/connecting.lua")
