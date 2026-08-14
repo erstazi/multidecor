@@ -1,9 +1,23 @@
 local modpath = minetest.get_modpath("craft_ingredients")
 local S = minetest.get_translator(minetest.get_current_modname())
-
 local bm_modpath = minetest.get_modpath("basic_materials")
 
-dofile(modpath .. "/ores.lua")
+local init_start = os.clock()
+minetest.log("action", "[multidecor] " .. minetest.get_current_modname() .. " init.lua START")
+
+local function timed_dofile(name)
+  local start = os.clock()
+  dofile(modpath .. "/" .. name .. ".lua")
+  local elapsed = os.clock() - start
+
+  minetest.log("action",
+    "[multidecor] " .. minetest.get_current_modname() .. "/" .. name ..
+    " loaded in " .. string.format("%.4f", elapsed) .. " seconds")
+end
+
+
+
+timed_dofile(modpath .. "/ores.lua")
 
 local woods = {"", "jungle", "aspen", "pine"}
 
@@ -517,3 +531,7 @@ if minetest.get_modpath("basic_materials") then
     },
   })
 end
+
+
+local init_elapsed = os.clock() - init_start
+minetest.log("action", "[multidecor] " .. minetest.get_current_modname() .. " init.lua END - elapsed " .. string.format("%.4f", init_elapsed) .. " seconds")

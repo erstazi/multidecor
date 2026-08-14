@@ -2,23 +2,37 @@ local modpath = minetest.get_modpath("modern")
 modern = {}
 modern.S = minetest.get_translator("modern")
 
-dofile(modpath .. "/bathroom.lua")
-dofile(modpath .. "/bedroom.lua")
-dofile(modpath .. "/chairs.lua")
-dofile(modpath .. "/covering.lua")
-dofile(modpath .. "/doors.lua")
-dofile(modpath .. "/fences.lua")
-dofile(modpath .. "/kitchen.lua")
-dofile(modpath .. "/lamps.lua")
-dofile(modpath .. "/living_room.lua")
-dofile(modpath .. "/paintings.lua")
-dofile(modpath .. "/shelves.lua")
-dofile(modpath .. "/stairs.lua")
-dofile(modpath .. "/tables.lua")
-dofile(modpath .. "/wardrobes.lua")
+local init_start = os.clock()
+minetest.log("action", "[multidecor] " .. minetest.get_current_modname() .. " init.lua START")
+
+local function timed_dofile(name)
+    local start = os.clock()
+    dofile(modpath .. "/" .. name .. ".lua")
+    local elapsed = os.clock() - start
+
+    minetest.log("action",
+        "[multidecor] " .. minetest.get_current_modname() .. "/" .. name ..
+        " loaded in " .. string.format("%.4f", elapsed) .. " seconds")
+end
+
+
+timed_dofile(modpath .. "/bathroom.lua")
+timed_dofile(modpath .. "/bedroom.lua")
+timed_dofile(modpath .. "/chairs.lua")
+timed_dofile(modpath .. "/covering.lua")
+timed_dofile(modpath .. "/doors.lua")
+timed_dofile(modpath .. "/fences.lua")
+timed_dofile(modpath .. "/kitchen.lua")
+timed_dofile(modpath .. "/lamps.lua")
+timed_dofile(modpath .. "/living_room.lua")
+timed_dofile(modpath .. "/paintings.lua")
+timed_dofile(modpath .. "/shelves.lua")
+timed_dofile(modpath .. "/stairs.lua")
+timed_dofile(modpath .. "/tables.lua")
+timed_dofile(modpath .. "/wardrobes.lua")
 
 if minetest.get_modpath("doclib") then
-    dofile(modpath .. "/guide_paper.lua")
+    timed_dofile(modpath .. "/guide_paper.lua")
 end
 
 -- Dump warnings about all registered furniture items not having craft recipes
@@ -71,3 +85,6 @@ local exclusions = {
 }
 
 multidecor.register.check_craft_recipes(exclusions)
+
+local init_elapsed = os.clock() - init_start
+minetest.log("action", "[multidecor] " .. minetest.get_current_modname() .. " init.lua END - elapsed " .. string.format("%.4f", init_elapsed) .. " seconds")
