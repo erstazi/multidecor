@@ -23,7 +23,7 @@ local modpath = minetest.get_modpath("decor_api")
 
 local function timed_dofile(name)
 	local start = os.clock()
-	dofile(modpath .. "/" .. name .. ".lua")
+	dofile(name)
 	local elapsed = os.clock() - start
 
 	minetest.log("action",

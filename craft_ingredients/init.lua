@@ -5,9 +5,10 @@ local bm_modpath = minetest.get_modpath("basic_materials")
 local init_start = os.clock()
 minetest.log("action", "[multidecor] " .. minetest.get_current_modname() .. " init.lua START")
 
+
 local function timed_dofile(name)
   local start = os.clock()
-  dofile(modpath .. "/" .. name .. ".lua")
+  dofile(name)
   local elapsed = os.clock() - start
 
   minetest.log("action",

@@ -5,14 +5,16 @@ modern.S = minetest.get_translator("modern")
 local init_start = os.clock()
 minetest.log("action", "[multidecor] " .. minetest.get_current_modname() .. " init.lua START")
 
-local function timed_dofile(name)
-    local start = os.clock()
-    dofile(modpath .. "/" .. name .. ".lua")
-    local elapsed = os.clock() - start
 
-    minetest.log("action",
-        "[multidecor] " .. minetest.get_current_modname() .. "/" .. name ..
-        " loaded in " .. string.format("%.4f", elapsed) .. " seconds")
+
+local function timed_dofile(name)
+  local start = os.clock()
+  dofile(name)
+  local elapsed = os.clock() - start
+
+  minetest.log("action",
+    "[multidecor] " .. minetest.get_current_modname() .. "/" .. name ..
+    " loaded in " .. string.format("%.4f", elapsed) .. " seconds")
 end
 
 
