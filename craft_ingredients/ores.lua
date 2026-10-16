@@ -241,6 +241,14 @@ oil_src_def.tiles = {table.copy(oil_anim_def)}
 oil_src_def.tiles[1].name = "multidecor_oil_source_animated.png"
 oil_src_def.liquidtype = "source"
 
+oil_src_def.on_rightclick = function(pos, node, clicker, itemstack)
+    if itemstack:get_name() == "fire:flint_and_steel" then
+        minetest.set_node(pos, {name = "fire:basic_flame"})
+        itemstack:add_wear(65535 / 65)
+    end
+    return itemstack
+end
+
 minetest.register_node(":multidecor:oil_source", oil_src_def)
 
 local oil_flow_def = table.copy(oil_def)
