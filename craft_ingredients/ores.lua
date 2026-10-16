@@ -288,3 +288,23 @@ minetest.register_ore({
     y_min = -31000,
     y_max = -30
 })
+
+
+minetest.register_craft({
+    type = "fuel",
+    recipe = "multidecor:consolidated_oil",
+    burntime = 80
+})
+
+minetest.register_craft({
+    type = "fuel",
+    recipe = "multidecor:oil_source",
+    burntime = 30
+})
+
+minetest.register_craft({
+    type = "fuel",
+    recipe = "craft_ingredients:oil_bucket",
+    burntime = 30,
+    replacements = {{"craft_ingredients:oil_bucket", "bucket:bucket_empty"}}
+})
