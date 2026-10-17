@@ -205,10 +205,9 @@ minetest.register_craftitem(":multidecor:plaster_lump", {
 })
 
 minetest.register_craft({
-	type = "cooking",
+	type = "shapeless",
 	output = "multidecor:plaster_lump",
-	recipe = "default:clay",
-	cooktime = 8
+	recipe = {"default:clay_lump"}
 })
 
 
