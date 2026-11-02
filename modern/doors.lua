@@ -94,6 +94,7 @@ for i, wood in ipairs(woods) do
 		white_dye = "dye:white"
 	elseif wood.name ~= "wooden" then
 		material_name = wood.name .. "_"
+		white_dye = ""
 	end
 
 
@@ -293,6 +294,13 @@ for i, wood in ipairs(woods) do
 	})
 
 	local window = "multidecor:" .. wood.name .. "_window_segment"
+
+	local window_door_recipe = {window, window, plank, "multidecor:hammer"}
+
+	if white_dye ~= "" then
+			table.insert(window_door_recipe, white_dye)
+	end
+
 	multidecor.register.register_door(wood.name .. "_window_door", {
 		style = "modern",
 		material = "wood",
@@ -316,11 +324,18 @@ for i, wood in ipairs(woods) do
 	},
 	{
 		type = "shapeless",
-		recipe = {window, window, plank, "multidecor:hammer", white_dye},
+		recipe = window_door_recipe,
 		replacements = {{"multidecor:hammer", "multidecor:hammer"}}
 	})
 
 	local window_with_thin_slats = "multidecor:" .. wood.name .. "_window_segment_with_thin_slats"
+
+	local window_door_with_thin_slats_recipe = {window_with_thin_slats, window_with_thin_slats, plank, "multidecor:hammer"}
+
+	if white_dye ~= "" then
+			table.insert(window_door_with_thin_slats_recipe, white_dye)
+	end
+
 	multidecor.register.register_door(wood.name .. "_window_door_with_thin_slats", {
 		style = "modern",
 		material = "wood",
@@ -344,7 +359,7 @@ for i, wood in ipairs(woods) do
 	},
 	{
 		type = "shapeless",
-		recipe = {window_with_thin_slats, window_with_thin_slats, plank, "multidecor:hammer", white_dye},
+		recipe = window_door_with_thin_slats_recipe,
 		replacements = {{"multidecor:hammer", "multidecor:hammer"}}
 	})
 end
@@ -739,7 +754,7 @@ for _, door_n in ipairs(sliding_doors_data) do
 
 	local sliding_doors_cornices_recipe_copy = table.copy(sliding_doors_cornices_recipe)
 
-	
+
 	for cmp_n = 1, #sliding_doors_cornices_recipe_copy.recipe[1] do
 		sliding_doors_cornices_recipe_copy.recipe[1][cmp_n] = door_n.craft_cmp
 	end
