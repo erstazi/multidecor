@@ -587,7 +587,8 @@ multidecor.register.register_door("technical_locked_door", {
 		{"multidecor:steel_sheet", "multidecor:chainlink", "multidecor:steel_scissors"},
 		{"multidecor:steel_sheet", "multidecor:steel_sheet", ""},
 		{"multidecor:steel_sheet", "multidecor:steel_sheet", ""}
-	}
+	},
+	replacements = {{"multidecor:steel_scissors", "multidecor:steel_scissors"}},
 })
 
 multidecor.register.register_door("metallic_locked_door", {

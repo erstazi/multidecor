@@ -25,7 +25,8 @@ if minetest.get_modpath("moreores") then
 			{"multidecor:silver_sheet", "multidecor:steel_scissors", ""},
 			{"multidecor:wax_candle", "", ""},
 			{"", "", ""}
-		}
+		},
+		replacements = {{"multidecor:steel_scissors", "multidecor:steel_scissors"}},
 	}
 
 	silver_chain_recipe = {
@@ -241,7 +242,8 @@ multidecor.register.register_light("brass_candlestick", {
 		{"multidecor:brass_sheet", "multidecor:steel_scissors", ""},
 		{"multidecor:wax_candle", "", ""},
 		{"", "", ""}
-	}
+	},
+	replacements = {{"multidecor:steel_scissors", "multidecor:steel_scissors"}},
 })
 
 multidecor.register.register_light("silver_candlestick", {

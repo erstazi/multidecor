@@ -114,7 +114,7 @@ bucket.register_liquid(
   nil,
   true
 )
-
+-- building_blocks:Marble
 minetest.register_node(":multidecor:marble_block", {
   description = S("Marble Block"),
   paramtype = "light",
@@ -124,6 +124,43 @@ minetest.register_node(":multidecor:marble_block", {
   groups = {cracky=2.5},
   sounds = default.node_sound_stone_defaults()
 })
+
+-- Marble -> Marble Block (1:1)
+minetest.register_craft({
+    output = "multidecor:marble_block",
+    recipe = {
+        {"building_blocks:Marble"},
+    },
+})
+
+-- Marble -> Marble Blocks (9:9)
+minetest.register_craft({
+  output = "multidecor:marble_block 9",
+  recipe = {
+    {"building_blocks:Marble", "building_blocks:Marble", "building_blocks:Marble"},
+    {"building_blocks:Marble", "building_blocks:Marble", "building_blocks:Marble"},
+    {"building_blocks:Marble", "building_blocks:Marble", "building_blocks:Marble"},
+  },
+})
+
+-- Marble Block -> Marble (1:1)
+minetest.register_craft({
+  output = "building_blocks:Marble",
+  recipe = {
+    {"multidecor:marble_block"},
+  },
+})
+
+-- Marble Blocks -> Marble (9:9)
+minetest.register_craft({
+  output = "building_blocks:Marble 9",
+  recipe = {
+    {"multidecor:marble_block", "multidecor:marble_block", "multidecor:marble_block"},
+    {"multidecor:marble_block", "multidecor:marble_block", "multidecor:marble_block"},
+    {"multidecor:marble_block", "multidecor:marble_block", "multidecor:marble_block"},
+  },
+})
+
 
 local to_bm_items_map = {
    {"metal_bar", "steel_bar"},
@@ -176,7 +213,8 @@ multidecor.craft.register("cabinet_door",
     {"multidecor:board", "multidecor:steel_stripe", "multidecor:steel_scissors"},
     {"", "", ""},
     {"", "", ""}
-  }
+  },
+  replacements = {{"multidecor:steel_scissors", "multidecor:steel_scissors"}},
 })
 
 multidecor.craft.register("cabinet_half_door",
@@ -185,7 +223,8 @@ multidecor.craft.register("cabinet_half_door",
     {"multidecor:plank", "multidecor:steel_stripe", "multidecor:steel_scissors"},
     {"", "", ""},
     {"", "", ""}
-  }
+  },
+  replacements = {{"multidecor:steel_scissors", "multidecor:steel_scissors"}},
 })
 
 multidecor.craft.register("cabinet_half_glass_door",
@@ -194,7 +233,8 @@ multidecor.craft.register("cabinet_half_glass_door",
     {"multidecor:plank", "multidecor:steel_stripe", "multidecor:steel_scissors"},
     {"xpanes:pane_flat", "", ""},
     {"", "", ""}
-  }
+  },
+  replacements = {{"multidecor:steel_scissors", "multidecor:steel_scissors"}},
 })
 
 multidecor.craft.register("saw",
